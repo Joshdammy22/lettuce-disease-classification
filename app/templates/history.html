@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-header">
+            <h2>Diagnosis History</h2>
+        </div>
+        <div class="card-body">
+            {% if diagnoses.items %}
+                <div class="row">
+                    {% for diagnosis in diagnoses.items %}
+                        <div class="col-md-6 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Diagnosis Date: {{ diagnosis.diagnosis_date.strftime('%Y-%m-%d %H:%M:%S') }}</h5>
+                                    <p class="card-text"><strong>Diagnosis:</strong> {{ diagnosis.diagnosis }}</p>
+                                    <p class="card-text"><strong>Disease Name:</strong> {{ diagnosis.disease_info.name if diagnosis.disease_info else 'N/A' }}</p>
+                                    <a href="{{ url_for('main.view_diagnosis', diagnosis_id=diagnosis.id) }}" class="btn btn-info btn-sm">View Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination Controls -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if diagnoses.has_prev %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('main.history', page=diagnoses.prev_num) }}" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">&laquo;</span>
+                            </li>
+                        {% endif %}
+
+                        {% for page_num in range(1, diagnoses.pages + 1) %}
+                            <li class="page-item {% if page_num == diagnoses.page %}active{% endif %}">
+                                <a class="page-link" href="{{ url_for('main.history', page=page_num) }}">{{ page_num }}</a>
+                            </li>
+                        {% endfor %}
+
+                        {% if diagnoses.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="{{ url_for('main.history', page=diagnoses.next_num) }}" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <span class="page-link">&raquo;</span>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% else %}
+                <p>No diagnosis history available.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+<!-- Footer -->
+<footer class="footer myfootreset">
+    <div class="container text-center">
+        <p class="mb-0">© 2024 Lettuce Guardian. All rights reserved.</p>
+    </div>
+</footer>
+{% endblock footer %}

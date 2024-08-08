@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 500px;">
+        <div class="card-header">
+            <h2>Upload Lettuce Image</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="{{ url_for('main.upload_image') }}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.image.label }} {{ form.image(class="form-control-file") }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Upload</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block footer %}
+<!-- Footer -->
+ <footer class="footer myfootreset">
+     <div class="container text-center">
+         <p class="mb-0">© 2024 Lettuce Guardian. All rights reserved.</p>
+     </div>
+ </footer>
+ {% endblock footer %}

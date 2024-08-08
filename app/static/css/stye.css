@@ -1,0 +1,143 @@
+/* Ensure full width and increased heights */
+.hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+/* Elastic and stretchy container */
+.elastic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: stretch 2s infinite ease-in-out;
+}
+
+@keyframes stretch {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+        min-height: 200px; /* Adjust for smaller screens */
+    }
+}
+
+
+
+/* Adjust the container-fluid to stretch full width */
+.container-fluid {
+    width: 100%;
+    padding: 0;
+}
+
+/* Increased heights */
+/* Hero Section */
+.hero-section {
+    min-height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background: url('/static/images/home.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px; /* Add padding for small screens */
+}
+
+/* Text styling within the hero section */
+.hero-section h1 {
+    font-size: 3rem; /* Larger size for main heading */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section p.lead {
+    font-size: 1.25rem; /* Medium size for lead paragraph */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-section a.btn {
+    font-size: 1.25rem; /* Medium size for buttons */
+    font-weight: bold;
+    color: #003366; /* Text color for buttons */
+    background-color: #FFD700; /* Button background color */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-section a.btn:hover {
+    background-color: #FFC107; /* Slightly different color on hover */
+    color: #003366; /* Text color on hover */
+}
+
+.features, .how-it-works, .resources {
+    min-height: 300px; /* Adjust based on your design */
+}
+
+.call-to-action {
+    min-height: 250px; /* Adjust based on your design */
+}
+
+footer {
+    min-height: 100px; /* Adjust based on your design */
+    background-color: #343a40;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+        padding: 20px 0;
+    }
+}
+
+.error {
+    color: red;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.form-container {
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.form-control {
+    width: 100%; /* Full width inside the container */
+}
+
+.card-body {
+    padding: 2rem; /* Adjust padding as needed */
+}
