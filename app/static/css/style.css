@@ -1,0 +1,254 @@
+/* Ensure full width and increased heights */
+.hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.features, .how-it-works, .resources {
+    min-height: 300px; /* Adjust based on your design */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+        min-height: 200px; /* Adjust for smaller screens */
+    }
+}
+
+
+
+/* Adjust the container-fluid to stretch full width */
+.container-fluid {
+    width: 100%;
+    padding: 0;
+}
+
+/* Hero Section */
+.hero-section {
+    min-height: 100vh; /* Full viewport height */
+    width: 100vw; /* Full viewport width */
+    background: url('/static/images/home.jpg') no-repeat center center;
+    background-size: cover;
+    color: rgb(230, 226, 21);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px; /* Add padding for small screens */
+}
+
+/* Text styling within the hero section */
+.hero-section h1 {
+    font-size: 3rem; /* Larger size for main heading */
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.hero-section p.lead {
+    font-size: 1.25rem; /* Medium size for lead paragraph */
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-section a.btn {
+    font-size: 1.25rem; /* Medium size for buttons */
+    font-weight: bold;
+    color: #003366; /* Text color for buttons */
+    background-color: #FFD700; /* Button background color */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.hero-section a.btn:hover {
+    background-color: #FFC107; /* Slightly different color on hover */
+    color: #003366; /* Text color on hover */
+}
+
+/* Card styling */
+.card {
+    border: none; /* Remove default border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow for depth */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+}
+
+.card:hover {
+    transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+/* Ensure all feature images have a standard and equal size */
+.feature-img {
+    width: 100%; /* Ensures the image takes up the width of the card */
+    height: 200px; /* Fixed height for all images */
+    object-fit: cover; /* Ensure the image covers the area without stretching */
+}
+
+.call-to-action {
+    min-height: 250px; /* Adjust based on your design */
+}
+
+.footer {
+    min-height: 30px;
+    background-color: #343a40;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 40px;
+}
+.myfoot{
+    margin-top: 450px;
+}
+.myfootlog{
+    margin-top: 100px;
+}
+.myfootreset{
+    margin-top: 200px;
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-section, .features, .how-it-works, .resources, .call-to-action, footer {
+        padding: 20px 0;
+    }
+}
+
+.error {
+    color: red;
+}
+
+.alert {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.form-container {
+    max-width: 600px; /* Adjust as needed */
+    margin: 0 auto; /* Center horizontally */
+}
+
+.form-control {
+    width: 100%; /* Full width inside the container */
+}
+
+.card-body {
+    padding: 2rem; /* Adjust padding as needed */
+}
+
+/* How It Works Section */
+.how-it-works {
+    background-color: #FFFFFF;
+}
+
+.step-card {
+    display: inline-block;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.step-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.step-img {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.animated-step {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Resources Section */
+.resources {
+    background-color: #F0F0F0;
+}
+
+.resource {
+    text-align: center;
+    padding: 20px;
+}
+
+.resource-img {
+    max-width: 150px; /* Adjust size as needed */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    margin-top: 10px;
+}
+
+
+/* Economic Importance Section */
+.economic-importance {
+    background-color: #E0F7FA; /* Light cyan background */
+    padding: 30px 0; /* Adjust padding for better spacing */
+}
+
+.container {
+    max-width: 90%; /* Limit container width for better responsiveness */
+    margin: 0 auto; /* Center the container */
+}
+
+.text-content {
+    text-align: center;
+    margin: 0 auto; /* Center the content */
+    padding: 0 15px; /* Add some padding to prevent text from touching the edges */
+}
+
+.animated-text {
+    display: inline-block;
+    overflow: hidden;
+    white-space: pre-wrap; /* Allow text to wrap and maintain spaces */
+    border-right: 2px solid #000; /* Cursor effect */
+    animation: blink-caret 0.75s step-end infinite;
+    font-size: 1.25rem; /* Adjust font size as needed */
+    color: #333; /* Darker text color for better visibility */
+    max-width: 100%; /* Ensure text does not exceed the screen width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    line-height: 1.5; /* Adjust line-height for better readability */
+    white-space: normal; /* Allow text to wrap naturally */
+}
+
+/* Keyframes for typing animation */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: black; }
+}
+
+.hidden-cursor {
+    border-right: none; /* Hide the cursor */
+    animation: none; /* Stop the blinking animation */
+}

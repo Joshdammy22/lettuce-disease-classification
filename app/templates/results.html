@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-header bg-primary text-white">
+            <h2>Diagnosis Results</h2>
+        </div>
+        <div class="card-body">
+            <img src="{{ url_for('static', filename='uploads/' ~ image_file) }}" style="width: auto; height: 500px;" alt="Uploaded Image" class="img-fluid mb-4 rounded mx-auto d-block">
+            <h4 class="card-title">Diagnosis: {{ diagnosis }}</h4>
+            {% if diagnosis != 'Healthy' %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p><strong>Disease Name:</strong> {{ disease_name }}</p>
+                    <p><strong>Description:</strong> {{ description }}</p>
+                    <p><strong>Causes:</strong> {{ causes }}</p>
+                    <p><strong>Solutions:</strong> {{ solutions }}</p>
+                    <p><strong>Recommendations:</strong> {{ recommendations }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="alert alert-success" role="alert">
+                Your lettuce plant appears to be healthy!
+            </div>
+            {% endif %}
+            <a href="{{ url_for('main.upload_image') }}" class="btn btn-primary mt-3">Upload Another Image</a>
+
+            <div class="mt-5">
+                <h2>Provide Feedback (Optional)</h2>
+                <form action="{{ url_for('main.submit_feedback', diagnosis_id=diagnosis_id) }}" method="POST">
+                    <div class="form-group">
+                        <label for="accuracy_feedback">How accurate was the diagnosis?</label>
+                        <input type="text" id="accuracy_feedback" name="accuracy_feedback" class="form-control" placeholder="e.g., Very accurate">
+                    </div>
+                    <div class="form-group">
+                        <label for="recommendation_feedback">How effective were the recommendations?</label>
+                        <input type="text" id="recommendation_feedback" name="recommendation_feedback" class="form-control" placeholder="e.g., Very effective">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- Footer -->
+<footer class="footer myfootlog bg-dark text-white py-3">
+    <div class="container text-center">
+        <p class="mb-0">© 2024 Lettuce Guardian. All rights reserved.</p>
+    </div>
+</footer>
+{% endblock %}

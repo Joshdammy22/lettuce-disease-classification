@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 800px;">
+        <div class="card-header">
+            <h2>Diagnosis Details</h2>
+        </div>
+        <div class="card-body">
+            <img src="{{ url_for('static', filename='uploads/' ~ image_file) }}" alt="Uploaded Image" class="img-fluid mb-4">
+            <h4>Date: {{ diagnosis.diagnosis_date.strftime('%Y-%m-%d %H:%M:%S') }}</h4>
+            <h4>Diagnosis: {{ diagnosis.diagnosis }}</h4>
+            {% if diagnosis.diagnosis == 'Diseased' %}
+                <p><strong>Disease Name:</strong> {{ diagnosis.disease_info.name }}</p>
+                <p><strong>Description:</strong> {{ diagnosis.disease_info.description }}</p>
+                <p><strong>Causes:</strong> {{ diagnosis.disease_info.causes }}</p>
+                <p><strong>Solutions:</strong> {{ diagnosis.disease_info.recommendation_text }}</p>
+                <p><strong>Recommendations:</strong> {{ diagnosis.disease_info.recommendation_text }}</p>
+            {% else %}
+                <p>Your lettuce plant appeared to be healthy.</p>
+            {% endif %}
+            <a href="{{ url_for('main.history') }}" class="btn btn-primary mt-3">Back to History</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+<!-- Footer -->
+ <footer class="footer myfootlog">
+     <div class="container text-center">
+         <p class="mb-0">© 2024 Lettuce Guardian. All rights reserved.</p>
+     </div>
+ </footer>
+ {% endblock footer %}

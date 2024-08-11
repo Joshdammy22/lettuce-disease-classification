@@ -1,0 +1,238 @@
+<!-- app/templates/index.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="container">
+        <h1 class="display-4">Welcome to Lettuce Guardian</h1>
+        <p class="lead">Your trusted partner in managing and safeguarding your lettuce crops with advanced technology.</p>
+        <hr class="my-4">
+        {% if current_user.is_authenticated %}
+            <p class="lead">Continue protecting your crops with us, {{ current_user.username }}!</p>
+        {% else %}
+            <p class="lead">
+                <a class="btn btn-light btn-lg mx-2" href="{{ url_for('auth.register') }}" role="button">Get Started</a>
+            </p>
+        {% endif %}
+    </div>
+</div>
+
+
+<!-- Features Section -->
+<section class="features py-5" style="background-color: #F0F0F0;">
+    <div class="container">
+        <h2 class="text-center mb-4">Features</h2>
+        <div class="row text-center">
+            <div class="col-md-4 feature">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/Monitoring.jpg') }}" alt="Crop Protection" class="card-img-top feature-img">
+                    <div class="card-body">
+                        <h3 class="card-title h4">Crop Protection</h3>
+                        <p class="card-text">Monitor your lettuce crops closely to prevent and address potential issues before they arise.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 feature">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/Advanced Analytics.jpg') }}" alt="Advanced Analytics" class="card-img-top feature-img">
+                    <div class="card-body">
+                        <h3 class="card-title h4">Advanced Analytics</h3>
+                        <p class="card-text">Leverage detailed analytics to optimize your lettuce growth and yield with precision.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 feature">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', filename='images/disease.jpg') }}" alt="Disease Detection" class="card-img-top feature-img">
+                    <div class="card-body">
+                        <h3 class="card-title h4">Disease Detection</h3>
+                        <p class="card-text">Utilize our cutting-edge image classification system to swiftly identify and manage crop diseases.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="how-it-works py-5" style="background-color: #FFFFFF;">
+    <div class="container">
+        <h2 class="text-center mb-4">How It Works</h2>
+        <div class="row">
+            <div class="col-md-4 text-center step animated-step">
+                <div class="step-card">
+                    <img src="{{ url_for('static', filename='images/upload.png') }}" alt="Upload Image" class="img-fluid mb-3 step-img">
+                    <h4 class="h5">Upload Your Image</h4>
+                    <p>Submit an image of your lettuce crop to begin the analysis process.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center step animated-step">
+                <div class="step-card">
+                    <img src="{{ url_for('static', filename='images/analytic.png') }}" alt="Analyze Crop" class="img-fluid mb-3 step-img">
+                    <h4 class="h5">Analyze the Crop</h4>
+                    <p>Our system will analyze the image to determine the health status of your lettuce.</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center step animated-step">
+                <div class="step-card">
+                    <img src="{{ url_for('static', filename='images/report.png') }}" alt="Receive Reports" class="img-fluid mb-3 step-img">
+                    <h4 class="h5">Receive Detailed Reports</h4>
+                    <p>Get comprehensive results and actionable recommendations to safeguard your crops.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Key Insights Section -->
+<section class="key-insights py-5" style="background-color: #E9F5E9;">
+    <div class="container">
+        <h2 class="text-center mb-4">Key Insights</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <h4 class="h5 mb-3">Optimal Growing Conditsions</h4>
+                <p>For healthy lettuce growth, ensure your crops are in a well-drained soil with adequate sunlight. Lettuce thrives in cooler temperatures, ideally between 60°F and 70°F (15°C - 21°C).</p>
+            </div>
+            
+            <div class="col-md-4 text-center">
+                <h4 class="h5 mb-3">Common Pests and Diseases</h4>
+                <p>Lettuce can be affected by various pests and diseases such as aphids and downy mildew. Regular monitoring and appropriate treatments can help manage and prevent these issues effectively.</p>
+            </div>
+
+            <div class="col-md-4 text-center">
+                <h4 class="h5 mb-3">Crop Rotation Benefits</h4>
+                <p>Implementing crop rotation by alternating lettuce with other crops can help reduce the buildup of pests and diseases, improve soil health, and enhance overall crop yield.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Lettuce Facts Section -->
+<section class="lettuce-facts py-5" style="background-color: #FFFFFF;">
+    <div class="container">
+        <h2 class="text-center mb-4">Lettuce Facts</h2>
+        <div class="row text-center">
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/statistics.png') }}" alt="Lettuce Statistics" class="img-fluid mb-3" style="max-width: 300px;">
+                <h3 class="h4">Interesting Statistics</h3>
+                <p>Lettuce is one of the most widely consumed leafy greens in the world. It's known for its high water content and nutritional value. Did you know? Lettuce can be grown year-round in controlled environments, making it a versatile crop for many farmers.</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{{ url_for('static', filename='images/calory.jpg') }}" alt="Nutritional Information" class="img-fluid mb-3" style="max-width: 300px;">
+                <h3 class="h4">Nutritional Information</h3>
+                <p>Lettuce is low in calories and high in vitamins and minerals. It contains essential nutrients like Vitamin A, Vitamin K, and folate, which are important for maintaining overall health and wellness.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+
+<!-- Economic Importance Section -->
+<section class="economic-importance py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Economic Importance</h2>
+        <div class="text-content">
+            <div id="animated-text" class="animated-text"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const textElement = document.getElementById('animated-text');
+        const lines = [
+    "Lettuce plays a significant role in the global agricultural economy.",
+            "It is a major crop for both fresh consumption and processing,",
+            "contributing to the livelihoods of farmers and the economy of producing regions.",
+            "In 2022, lettuce was the world's 649th most traded product, with a total trade value of $3.44 billion.",
+            "Key exporters include Spain, the United States, Mexico, Italy, and the Netherlands,",
+            "while the top importers are the United States, Canada, Germany, France, and the United Kingdom.",
+            "With growing demand for fresh and healthy produce,",
+            "the economic impact of lettuce cultivation continues to rise.",
+            "       ",
+            "Source: Observatory of Economic Complexity (OEC)"
+        ];
+        
+        let currentLine = 0;
+        let currentChar = 0;
+        const typingSpeed = 50; // Speed of typing in milliseconds
+
+        function typeLine() {
+            if (currentLine < lines.length) {
+                const line = lines[currentLine];
+                if (currentChar < line.length) {
+                    textElement.innerHTML += line.charAt(currentChar);
+                    currentChar++;
+                    setTimeout(typeLine, typingSpeed);
+                } else {
+                    textElement.innerHTML += '<br>';
+                    currentLine++;
+                    currentChar = 0;
+                    setTimeout(typeLine, typingSpeed);
+                }
+            } else {
+                // Remove the cursor after typing is complete
+                textElement.classList.add('hidden-cursor');
+            }
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    typeLine();
+                    observer.disconnect(); // Stop observing once the animation starts
+                }
+            });
+        }, { threshold: 0.1 });
+
+        observer.observe(textElement);
+    });
+</script>
+
+
+
+<!-- AI/ML in Agriculture Section -->
+<section class="ai-ml-agriculture py-5" style="background-color: #F9F9F9;">
+    <div class="container">
+        <h2 class="text-center mb-4">AI & ML in Agriculture</h2>
+        <div class="row">
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/ai-powered.jpg') }}" alt="Predictive Analytics" class="img-fluid mb-3" style="max-width: 80%;">
+                <h4 class="h5 mb-3">Predictive Analytics</h4>
+                <p>AI-powered predictive analytics help farmers forecast crop yields, optimize planting schedules, and manage resources efficiently. Machine learning algorithms analyze historical data and environmental factors to provide actionable insights.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/germs.png') }}" alt="Disease Detection" class="img-fluid mb-3" style="max-width: 80%;">
+                <h4 class="h5 mb-3">Disease Detection</h4>
+                <p>Machine learning models can identify crop diseases from images with high accuracy. These models are trained on large datasets to recognize patterns and symptoms, enabling early intervention and reducing crop loss.</p>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="{{ url_for('static', filename='images/planting.png') }}" alt="Automated Farming" class="img-fluid mb-3" style="max-width: 80%;">
+                <h4 class="h5 mb-3">Automated Farming</h4>
+                <p>AI and robotics are revolutionizing farming with automated solutions such as robotic harvesters and drones for monitoring. These technologies enhance efficiency, reduce labor costs, and improve precision in farming practices.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Contact Us Section -->
+<section class="contact-us py-5" style="background-color: #F0F0F0;">
+    <div class="container text-center">
+        <h2 class="text-center mb-4">Contact Us</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <p><strong>Email:</strong> support@lettuceguardian.com</p>
+                <p><strong>Phone:</strong> +1 (123) 456-7890</p>
+                <p><strong>Address:</strong> 123 Lettuce Lane, Greenfield, CA 12345</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

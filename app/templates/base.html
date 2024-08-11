@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Lettuce Guardian{% endblock %}</title>
+    <!-- Bootstrap CSS CDN -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='fav.png') }}" type="image/x-icon">
+    <!-- React JS and Babel CDN -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url_for('main.index') }}">Lettuce Guardian</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    {% if request.endpoint != 'main.index' %}
+                        <a class="nav-link" href="{{ url_for('main.index') }}">Home</a>
+                    {% endif %}
+                </li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item">
+                        {% if request.endpoint != 'main.history' %}
+                            <a class="nav-link" href="{{ url_for('main.history') }}">History</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.endpoint != 'main.upload_image' %}
+                            <a class="nav-link" href="{{ url_for('main.upload_image') }}">Upload an Image of Lettuce</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        {% if request.endpoint != 'auth.login' %}
+                            <a class="nav-link" href="{{ url_for('auth.login') }}">Login</a>
+                        {% endif %}
+                    </li>
+                    <li class="nav-item">
+                        {% if request.endpoint != 'auth.register' %}
+                            <a class="nav-link" href="{{ url_for('auth.register') }}">Register</a>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    
+    <div>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        <div id="react-root"></div>
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+   <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Lettuce Guardian. All rights reserved.</p>
+        </div>
+    </footer>
+    {% endblock footer %}
+    
+    <!-- Bootstrap JS, Popper.js, and jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha384-ZvpUoO/+PpJ6T3FxF8+T6+5M5r7s/8Yl4IvOnE3B/J1cMe5HV/77wBsK8mcEF6i4"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"
+            integrity="sha384-Rc9Tpea21n4VZefN6LOOXbRg/uB8vo+HkcQx9ohcZ2l3AtW5xdq5+JVoJv2Gr9z/"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+jFuR0fF0jPxJw+3vqkEc8JOgYb8qU2r0n1"
+            crossorigin="anonymous"></script>
+    
+    <!-- In your base.html, add these scripts in the <head> or before the closing </body> tag -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+<!-- jQuery, Popper.js, and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
+</body>
+</html>
