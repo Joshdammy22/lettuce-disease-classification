@@ -22,8 +22,7 @@ def register():
         user = User(username=form.username.data, email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
-        send_verification_email(user)
-        flash('An email has been sent with instructions to verify your account.', 'info')
+        flash('Registration successful! you can now proceed to login.', 'info')
         return redirect(url_for('auth.login'))  # Redirect to login page after successful registration
 
     if form.errors:
