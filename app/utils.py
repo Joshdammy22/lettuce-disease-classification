@@ -5,9 +5,15 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import numpy as np
 from PIL import Image
 
-# Load the trained models
-model_phase_one = load_model(r'C:\Users\Other\Desktop\Enhancing Lettuce Crop Managemen\lettuce_crop_management\first-classification_mobilenetv2-functional-model.keras')
-model_phase_two = load_model(r'C:\Users\Other\Desktop\Enhancing Lettuce Crop Managemen\lettuce_crop_management\second-classification-mobilenetv2-model.keras')
+import os
+
+# Get the base directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Use relative paths for loading the models
+model_phase_one = load_model(os.path.join(BASE_DIR, '..', 'first-classification_mobilenetv2-functional-model.keras'))
+model_phase_two = load_model(os.path.join(BASE_DIR, '..', 'second-classification-mobilenetv2-model.keras'))
+
 
 def load_and_preprocess_image(img_path):
     """
